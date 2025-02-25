@@ -11,34 +11,20 @@ namespace LogGenerator {
             stopwatch.Start();
 
             for (int i = 0; i < 10; i++) {
-
                 string level = logLevels[random.Next(logLevels.Length)];
-                switch (level) {
-                    case "INFO":
-                        Console.WriteLine($"[{level}] {DateTime.Now} - Here is information");
-                        Thread.Sleep(1000);
-                        break;
+                string message = $"[{level}] {DateTime.Now} - This is a {level} message";
 
-                    case "WARNING":
-                        Console.WriteLine($"[{level}] {DateTime.Now} - This is a WARNING message");
-                        Thread.Sleep(1000);
-                        break;
-
-                    case "ERROR":
-                        Console.WriteLine($"[{level}] {DateTime.Now} - THERE IS AN ERROR");
-                        Thread.Sleep(1000);
-                        break;
-
-                    default:
-                        Console.WriteLine($"[UNKNOWN] {DateTime.Now} - This is a log message");
-                        Thread.Sleep(1000);
-                        break;
+                // simulates incomplete log messages //
+                if (random.Next(2) == 0) {
+                    message = string.Empty;
                 }
 
+                Console.WriteLine(message);
+                Thread.Sleep(1000);
             }
 
             stopwatch.Stop();
-            Console.WriteLine($"LogGenerator Time Elapsed: {stopwatch.Elapsed:hh\\:mm\\:ss\\.fff}");
+            Console.WriteLine($"\nLogGenerator Time Elapsed: {stopwatch.Elapsed:hh\\:mm\\:ss\\.fff}");
         }
     }
 }

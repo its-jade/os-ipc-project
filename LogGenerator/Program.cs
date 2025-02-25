@@ -5,18 +5,32 @@ namespace LogGenerator {
         public static void Main(string[] args) {
             string[] logLevels = new string[] { "INFO", "WARNING", "ERROR" };
             Random random = new();
-            int count = 0;
 
-            while (count < 10) {
-                count++;
-                int index = random.Next(1, 11);
-                // generate a random number 1-10
-                // if number is 1,
-                // print out a slightly different message
+            for (int i = 0; i < 10; i++) {
 
                 string level = logLevels[random.Next(logLevels.Length)];
-                Console.WriteLine($"[{level}] {DateTime.Now} - This is a log message");
-                Thread.Sleep(1000);
+                switch (level) {
+                    case "INFO":
+                        Console.WriteLine($"[{level}] {DateTime.Now} - Here is information");
+                        Thread.Sleep(1000);
+                        break;
+
+                    case "WARNING":
+                        Console.WriteLine($"[{level}] {DateTime.Now} - This is a WARNING message");
+                        Thread.Sleep(1000);
+                        break;
+
+                    case "ERROR":
+                        Console.WriteLine($"[{level}] {DateTime.Now} - THERE IS AN ERROR");
+                        Thread.Sleep(1000);
+                        break;
+
+                    default:
+                        Console.WriteLine($"[UNKNOWN] {DateTime.Now} - This is a log message");
+                        Thread.Sleep(1000);
+                        break;
+                }
+
             }
         }
     }

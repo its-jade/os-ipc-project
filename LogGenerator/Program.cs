@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace LogGenerator {
     public class Program {
         public static void Main(string[] args) {
             string[] logLevels = new string[] { "INFO", "WARNING", "ERROR" };
             Random random = new();
+
+            Stopwatch stopwatch = new();
+            stopwatch.Start();
 
             for (int i = 0; i < 10; i++) {
 
@@ -32,6 +36,9 @@ namespace LogGenerator {
                 }
 
             }
+
+            stopwatch.Stop();
+            Console.WriteLine($"LogGenerator Time Elapsed: {stopwatch.Elapsed:hh\\:mm\\:ss\\.fff}");
         }
     }
 }

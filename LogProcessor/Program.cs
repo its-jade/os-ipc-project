@@ -10,21 +10,13 @@ namespace LogProcessor {
             stopwatch.Start();
 
             while ((line = Console.ReadLine()) != null) {
-                // Thread.Sleep(2000); // simulate slow process
-
-                // handle if no log message
-                if (string.IsNullOrWhiteSpace(line)) {
-                    Console.WriteLine("There was an empty log");
-                    continue;
-                }
-
                 if (line.StartsWith("[ERROR]")) {
                     Console.WriteLine($"🔴ALERT: {line}");
 
                 } else if (line.StartsWith("[WARNING]")) {
                     Console.WriteLine($"🟡ALERT: {line}");
 
-                } else if (line.StartsWith("LogGenerator")) {
+                } else if (line.StartsWith("LogGenerator") || string.IsNullOrWhiteSpace(line)) {
                     Console.WriteLine($"{line}");
 
                 } else {

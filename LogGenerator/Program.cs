@@ -6,18 +6,14 @@ namespace LogGenerator {
         public static void Main(string[] args) {
             string[] logLevels = new string[] { "INFO", "WARNING", "ERROR" };
             Random random = new();
+            int numberOfMessages = 10;
 
             Stopwatch stopwatch = new();
             stopwatch.Start();
 
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < numberOfMessages; i++) {
                 string level = logLevels[random.Next(logLevels.Length)];
                 string message = $"[{level}] {DateTime.Now} - This is a {level} message";
-
-                // simulates incomplete log messages //
-                if (random.Next(2) == 0) {
-                    message = string.Empty;
-                }
 
                 Console.WriteLine(message);
                 Thread.Sleep(1000);
